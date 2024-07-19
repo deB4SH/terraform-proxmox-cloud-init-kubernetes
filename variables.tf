@@ -34,12 +34,6 @@ variable "kubernetes_version" {
   default = "1.30"
 }
 
-variable "cilium-version" {
-  type = string
-  description = "Version of Cilium to deploy"
-  default = "0.16.8"
-}
-
 # vm information
 variable "vm_id" {
   type        = number

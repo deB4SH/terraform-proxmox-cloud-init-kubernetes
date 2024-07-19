@@ -10,7 +10,6 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-controlplane"
       user_password      = var.user_password
       user_pub_key       = var.user_pub_key
       kubernetes_version = var.kubernetes_version
-      cilium-cli-version = var.cilium-version
       kubeadm_cmd        = "kubeadm init --skip-phases=addon/kube-proxy"
     })
     file_name = format("%s-%s.yaml","cloud-init-kubernetes-controlplane",each.value.name)
@@ -31,7 +30,6 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-worker" {
       user_password      = var.user_password
       user_pub_key       = var.user_pub_key
       kubernetes_version = var.kubernetes_version
-      cilium-cli-version = var.cilium-version
       kubeadm_cmd        = module.kubeadm-join.stdout
     })
     file_name = format("%s-%s.yaml","cloud-init-kubernetes-worker",each.value.name)

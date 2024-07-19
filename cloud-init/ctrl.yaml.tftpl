@@ -65,8 +65,5 @@ runcmd:
   - mkdir -p /home/${user}/.kube
   - cp /etc/kubernetes/admin.conf /home/${user}/.kube/config
   - chown -R ${user}:${user} /home/${user}/.kube
-  - curl -sfLO https://github.com/cilium/cilium-cli/releases/download/v${cilium-cli-version}/cilium-linux-amd64.tar.gz
-  - tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
-  - rm cilium-linux-amd64.tar.gz
   - systemctl enable qemu-guest-agent
   - systemctl start qemu-guest-agent

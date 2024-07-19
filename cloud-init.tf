@@ -1,7 +1,7 @@
 resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-controlplane" {
   node_name    = var.node_name
   content_type = "snippets"
-  datastore_id = "local" #TODO: allow different data stores
+  datastore_id = var.cloud_init_configuration_datastore_id
 
   source_raw {
     data = templatefile("${path.module}/cloud-init/ctrl.yaml.tftpl", { 
@@ -13,7 +13,7 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-controlplane"
       cilium-cli-version = var.cilium-version
       kubeadm_cmd        = "kubeadm init --skip-phases=addon/kube-proxy"
     })
-    file_name = "cloud-init-kubernetes-controlplane.yaml" #TODO: FIX this for multiple cloud-init files / multiple control planes
+    file_name = format("%s-%s.yaml","cloud-init-kubernetes-controlplane",each.value.name)
   }
 }
 
@@ -22,7 +22,7 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-worker" {
   for_each = { for each in var.workers : each.name => each }
   node_name    = each.value.node
   content_type = "snippets"
-  datastore_id = "local" #TODO: allow different data stores
+  datastore_id = var.cloud_init_configuration_datastore_id
 
   source_raw {
     data = templatefile("${path.module}/cloud-init/worker.yaml.tftpl", { 
@@ -34,6 +34,6 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-worker" {
       cilium-cli-version = var.cilium-version
       kubeadm_cmd        = module.kubeadm-join.stdout
     })
-    file_name = "cloud-init-kubernetes-worker01.yaml" #TODO: FIX this for multiple cloud-init files / multiple worker
+    file_name = format("%s-%s.yaml","cloud-init-kubernetes-worker",each.value.name)
   }
 }

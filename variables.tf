@@ -142,3 +142,9 @@ variable "vm_images" {
   }
   ]
 }
+
+variable "cloud_init_configuration_datastore_id" {
+  type        = string
+  description = "Datastore to use for cloud init configuration files"
+  default     = "local"
+}

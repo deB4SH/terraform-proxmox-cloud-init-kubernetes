@@ -58,8 +58,8 @@ resource "proxmox_virtual_environment_vm" "k8s-worker-node" {
 
   initialization {
     dns {
-      domain  = var.vm_dns.domain
-      servers = var.vm_dns.servers
+      domain  = var.dns_configuration.domain
+      servers = var.dns_configuration.servers
     }
     ip_config {
       ipv4 {

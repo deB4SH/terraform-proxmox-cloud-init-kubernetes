@@ -89,7 +89,7 @@ variable "vm_ip_config" {
   })
 }
 
-variable "vm_dns" {
+variable "dns_configuration" {
   description = "DNS config for VMs"
   type        = object({
     domain  = string

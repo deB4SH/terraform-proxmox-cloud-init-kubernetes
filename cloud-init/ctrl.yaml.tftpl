@@ -10,12 +10,12 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
 
 hostname: ${hostname}
-timezone: Europe/Berlin
+timezone: ${timezone}
 
 apt:
   primary:
     - arches: [amd64, arm64, i386, default]
-      uri: https://debian.inf.tu-dresden.de/debian
+      uri: ${apt_mirror}
 
 write_files:
   - path: /etc/modules-load.d/k8s.conf

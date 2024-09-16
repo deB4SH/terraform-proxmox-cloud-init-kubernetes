@@ -142,3 +142,15 @@ variable "cloud_init_configuration_datastore_id" {
   description = "Datastore to use for cloud init configuration files"
   default     = "local"
 }
+
+variable "cloud_init_configuration_apt_mirror_uri" {
+  type = string
+  description = "Default mirror to use for download resources"
+  default = "https://deb.debian.org/debian"
+}
+
+variable "cloud_init_configuration_timezone" {
+  type = string
+  description = "Timezone of VM"
+  default = "Europe/Berlin" 
+}

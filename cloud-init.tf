@@ -36,6 +36,7 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-worker" {
       user               = var.user
       user_password      = var.user_password
       user_pub_key       = var.user_pub_key
+      timezone           = var.cloud_init_configuration_timezone
       #apt related
       apt_mirror         = var.cloud_init_configuration_apt_mirror_uri
       #kube related

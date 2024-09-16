@@ -18,7 +18,7 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-controlplane"
       kubeadm_cmd        = "kubeadm init --skip-phases=addon/kube-proxy"
 
     })
-    file_name = format("%s-%s.yaml","cloud-init-kubernetes-controlplane",each.value.name)
+    file_name = format("%s.yaml","cloud-init-kubernetes-controlplane")
   }
 }
 

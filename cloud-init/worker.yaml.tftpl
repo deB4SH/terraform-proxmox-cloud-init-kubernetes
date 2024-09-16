@@ -14,8 +14,11 @@ timezone: ${timezone}
 
 apt:
   primary:
-    - arches: [amd64, arm64, i386, default] #TODO: externalize this
-      uri: ${apt_mirror}
+    - arches: [amd64, arm64, i386, default]
+      uri: ${apt_mirror_primary}
+  security:
+    - arches: [default]
+      uri: ${apt_mirror_security}
 
 write_files:
   - path: /etc/modules-load.d/k8s.conf

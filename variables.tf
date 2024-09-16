@@ -143,10 +143,16 @@ variable "cloud_init_configuration_datastore_id" {
   default     = "local"
 }
 
-variable "cloud_init_configuration_apt_mirror_uri" {
+variable "cloud_init_configuration_apt_primary_mirror_uri" {
   type = string
   description = "Default mirror to use for download resources"
   default = "https://deb.debian.org/debian"
+}
+
+variable "cloud_init_configuration_apt_security_mirror_uri" {
+  type = string
+  description = "Default security mirror to use for download resources"
+  default = "http://security.debian.org/debian-security/"
 }
 
 variable "cloud_init_configuration_timezone" {

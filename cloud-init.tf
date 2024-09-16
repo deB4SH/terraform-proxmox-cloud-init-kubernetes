@@ -6,16 +6,17 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-controlplane"
   source_raw {
     data = templatefile("${path.module}/cloud-init/ctrl.yaml.tftpl", { 
       #defaults
-      hostname           = var.vm_name
-      user               = var.user
-      user_password      = var.user_password
-      user_pub_key       = var.user_pub_key
-      timezone           = var.cloud_init_configuration_timezone
+      hostname            = var.vm_name
+      user                = var.user
+      user_password       = var.user_password
+      user_pub_key        = var.user_pub_key
+      timezone            = var.cloud_init_configuration_timezone
       #apt related
-      apt_mirror         = var.cloud_init_configuration_apt_mirror_uri
+      apt_mirror_primary  = var.cloud_init_configuration_apt_primary_mirror_uri
+      apt_mirror_security = var.cloud_init_configuration_apt_security_mirror_uri
       #kube related
-      kubernetes_version = var.kubernetes_version
-      kubeadm_cmd        = "kubeadm init --skip-phases=addon/kube-proxy"
+      kubernetes_version  = var.kubernetes_version
+      kubeadm_cmd         = "kubeadm init --skip-phases=addon/kube-proxy"
 
     })
     file_name = format("%s.yaml","cloud-init-kubernetes-controlplane")
@@ -38,7 +39,8 @@ resource "proxmox_virtual_environment_file" "cloud-init-kubernetes-worker" {
       user_pub_key       = var.user_pub_key
       timezone           = var.cloud_init_configuration_timezone
       #apt related
-      apt_mirror         = var.cloud_init_configuration_apt_mirror_uri
+      apt_mirror_primary  = var.cloud_init_configuration_apt_primary_mirror_uri
+      apt_mirror_security = var.cloud_init_configuration_apt_security_mirror_uri
       #kube related
       kubernetes_version = var.kubernetes_version
       kubeadm_cmd        = module.kubeadm-join.stdout

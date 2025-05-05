@@ -137,7 +137,7 @@ module "kubernetes" {
 
   kubernetes_controlplanes = [
     {
-      node = YOUR_PVE_NODE"
+      node = "YOUR_PVE_NODE"
       name = "kube-ctrl-1"
       id_offset = 0
       ip = "10.10.10.3/22"

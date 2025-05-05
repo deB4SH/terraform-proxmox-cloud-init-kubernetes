@@ -188,6 +188,9 @@ You could also fork this repository and enable kubeproxy again! Everything is po
 #### FAQ: I'm getting errors ("local" does not support content type "snippets")
 You need to enable snippets on your local storage. You can do this via ui. `Datacenter -> Storage -> select local -> Edit -> also select Snippets` or via console `pvesm set local --content images,rootdir,vztmpl,backup,iso,snippets`
 
+#### FAQ: I'm getting errors (Could not download file ..., - Reason: can't upload to storage type 'lvmthin', not a file based storage!)
+You need to double check your `os_images_datastore_id`-Attribute in your terraform file. In an vanilla Proxmox installation with default values you need to change it to `local` instead of `local-lvm` (example: `os_images_datastore_id = "local"`)
+
 #### FAQ: Where is my kubeconfig?
 The resulting kubeconfig is automatically places within the `output` folder of your terraform module directory.
 

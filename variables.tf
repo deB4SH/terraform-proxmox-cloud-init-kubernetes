@@ -213,13 +213,13 @@ variable "postgres_conf_network_address" {
 */ 
 variable "kubernetes_version" {
   type = string
-  default = "1.31"
+  default = "1.32"
   description = "Kubernetes version to install and use."
 }
 
 variable "kubernetes_version_semantic" {
   type = string
-  default = "1.31.5"
+  default = "1.32.4"
   description = "Semantic kubernetes version to install and use."
 }
 

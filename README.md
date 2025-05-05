@@ -119,7 +119,7 @@ module "kubernetes" {
   # Images
   os_images_datastore_id = "local-lvm"
   # User Configuration
-  vm_user = "myAwesomeVmUser
+  vm_user = "myAwesomeVmUser"
   vm_user_password = "MySecurePasswordThatIGenerated" # mkpasswd -m sha-512
   vm_user_public_key = "myPubKey"
   # Postgre Configuration
